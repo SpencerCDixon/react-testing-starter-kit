@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, describeWithDOM, mount, spyLifecycle } from 'enzyme';
-import CommentContainer from '../../src/containers/CommentContainer';
+import CommentContainer from 'containers/CommentContainer';
 
 describe('expect to be available', () => {
   it('is there', () => {
@@ -25,5 +25,11 @@ describe('(Component) CommentContainer', () => {
         CommentContainer.prototype.componentDidMount.calledOnce
       ).to.be.true;
     });
+  });
+});
+
+describe('another test', () => {
+  it('just works', () => {
+
   });
 });

@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 
 class CommentContainer extends Component {
   componentDidMount() {
-    console.log('Component mounted...');
   }
 
   render() {
