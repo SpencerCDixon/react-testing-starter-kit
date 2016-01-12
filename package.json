@@ -1,10 +1,12 @@
 {
   "name": "react-testing-starter-kit",
-  "version": "1.0.0",
-  "description": "Step 1: Set up webpack + babel",
-  "main": "webpack.config.js",
+  "version": "0.1.0",
+  "description": "React starter kit with nice testing environment set up.",
+  "main": "src/main.js",
   "directories": {
-    "test": "tests"
+    "test": "tests",
+    "src": "src",
+    "dist": "dist"
   },
   "dependencies": {
     "react": "^0.14.6",
@@ -17,7 +19,10 @@
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.3.13",
     "chai": "^3.4.1",
+    "enzyme": "^1.2.0",
     "mocha": "^2.3.4",
+    "react-addons-test-utils": "^0.14.6",
+    "sinon": "^1.17.2",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
   },
@@ -27,6 +32,17 @@
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
     "test:watch": "npm test -- --watch"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "tbd"
+  },
+  "keywords": [
+    "react",
+    "mocha",
+    "chai",
+    "enzyme",
+    "testing"
+  ],
+  "author": "Spencer Dixon",
   "license": "ISC"
 }
