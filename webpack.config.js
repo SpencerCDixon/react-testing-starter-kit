@@ -1,11 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
 
-// Speed up re-bundling time by giving explicit path to expensive libraries
-var node_modules = path.resolve(__dirname, 'node_modules');
-var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
-var pathToReactDOM = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js');
-
 var config = {
   entry: [
     'webpack/hot/dev-server',
@@ -13,10 +8,6 @@ var config = {
     './src/main.js'
   ],
   resolve: {
-    alias: {
-      'react': pathToReact,
-      'react-dom': pathToReactDOM
-    },
     root: [
       // allows us to import modules as if /src was the root.
       // so I can do: import Comment from 'components/Comment'
@@ -47,8 +38,6 @@ var config = {
         }
       }
     ],
-    // Speed up rebundling time
-    noParse: [pathToReact, pathToReactDOM]
   }
 }
 

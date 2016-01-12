@@ -21,7 +21,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base dist"
+    "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist"
   },
   "author": "",
   "license": "ISC"
