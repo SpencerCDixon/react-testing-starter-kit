@@ -4,7 +4,7 @@ var path = require('path');
 var config = {
   entry: [
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:3000',
     './src/main.js'
   ],
   resolve: {
@@ -30,12 +30,7 @@ var config = {
         exclude: /(node_modules|bower_components)/,
         // babel is alias for babel-loader
         // npm i babel-core babel-loader --save-dev
-        loader: 'babel',
-        query: {
-          // pass in presets here instead of in a babelrc file to be more explicit
-          // npm i babel-preset-react babel-preset-es2015 --save-dev
-          presets: ['react', 'es2015']
-        }
+        loader: 'babel'
       }
     ],
   }

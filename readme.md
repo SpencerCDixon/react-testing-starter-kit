@@ -34,3 +34,19 @@ Useful Webpack Links:
 https://github.com/petehunt/webpack-howto
 https://christianalfoni.github.io/react-webpack-cookbook/Getting-started.html
 http://blog.madewithlove.be/post/webpack-your-bags/
+
+```
+# .babelrc
+{
+  "presets": ["react", "es2015"]
+}
+```
+
+## Testing
+```
+npm i mocha chai --save-dev
+```
+
+Add scripts to package.json
+"test": "mocha --compilers js:babel-register --recursive",
+"test:watch": "npm test -- --watch",
