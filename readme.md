@@ -80,3 +80,12 @@ npm i sinon --save-dev
 global.sinon = sinon;
 ```
 
+
+Setting up karma:
+```
+npm i karma karma-mocha --save-dev
+npm install --save-dev karma-phantomjs-launcher
+npm i karma-webpack --save-dev
+```
+
+set up karma.config.js
