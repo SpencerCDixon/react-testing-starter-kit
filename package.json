@@ -41,7 +41,8 @@
     "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
     "build": "webpack",
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "karma": "node_modules/.bin/karma start karma.config.js"
   },
   "repository": {
     "type": "git",
