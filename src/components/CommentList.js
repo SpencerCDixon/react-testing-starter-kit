@@ -12,10 +12,10 @@ class CommentList extends Component {
 
   render() {
     const { isActive } = this.props;
-    const classes = isActive ? 'active-list' : 'inactive-list';
+    const className = isActive ? 'active-list' : 'inactive-list';
 
     return (
-      <ul>
+      <ul className={className}>
         <li> Comment One </li>
       </ul>
     )

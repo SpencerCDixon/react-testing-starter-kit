@@ -1,9 +1,10 @@
+var argv = require('yargs').argv;
 var path = require('path');
 
 module.exports = function(config) {
   config.set({
     browsers: ['PhantomJS'],
-    // singleRun: true, // just run once by default
+    singleRun: !argv.watch, // just run once by default
     frameworks: ['mocha', 'chai'],
     // npm i karma-spec-reporter --save-dev
     // displays tests in a nice readable format

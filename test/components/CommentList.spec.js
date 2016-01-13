@@ -63,7 +63,7 @@ describe('(Component) CommentList', () => {
       <CommentList onMount={() => {}} isActive />
     )
     it('should render with className active-list', () => {
-      expect(wrapper.prop('className').to.eql('active-list');
+      expect(wrapper.prop('className')).to.eql('active-list');
     });
   });
 
@@ -73,7 +73,7 @@ describe('(Component) CommentList', () => {
       <CommentList onMount={() => {}} isActive={false} />
     )
     it('should render with className inactive-list', () => {
-      expect(wrapper.prop('className').to.eql('inactive-list');
+      expect(wrapper.prop('className')).to.eql('inactive-list');
     });
   });
 });

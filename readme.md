@@ -1,91 +1,32 @@
-Step 1: Set up webpack + babel
+This starter kit goes with a blog post I wrote on how to set up TDD React
+environment.  [The blog post can be found here](http://spencerdixon.com/blog/setting-up-testing-in-react.html).
 
+**Goal**: Goal of this starter kit is just to act as an example of a pretty
+robust testing environment for React.  
+
+### Getting Started
 ```
-npm install --save-dev babel-loader babel-core webpack
-```
+git clone git@github.com:SpencerCDixon/react-testing-starter-kit.git myProject
+cd myProject
 
-Create webpack.config.js
-```
-var webpack = require('webpack');
-var path = require('path');
+nvm use 5.1.0    # make sure to use v4 or greater
+npm install
 
-var config = {
-  entry: ['./src/main.js'],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel'], exclude: /node_modules/ }
-    ]
-  }
-}
-
-module.exports = config;
+# open split terminal window
+npm run dev      # get webpack server running
+npm run dev:test # to get karma test server going
 ```
 
-Set up dev server for bettter development:
-```
-npm i webpack-dev-server -S
-```
-
-Useful Webpack Links:
-https://github.com/petehunt/webpack-howto
-https://christianalfoni.github.io/react-webpack-cookbook/Getting-started.html
-http://blog.madewithlove.be/post/webpack-your-bags/
-
-Set up babelrc to use the presets for webpack compiling and for mocha testing
-```
-# .babelrc
-{
-  "presets": ["react", "es2015"]
-}
-```
-
-## Testing
-```
-npm i mocha chai --save-dev
-```
-
-Add scripts to package.json
-"test": "mocha --compilers js:babel-register --recursive",
-"test:watch": "npm test -- --watch",
-
-Make expect global:
-```
-describe('expect to be available', () => {
-  it('is there', () => {
-    expect(true).to.be.true;
-  });
-});
-```
-
-Get enzyme set up:
-```
-describe('(Component) CommentContainer', () => {
-  it('renders as a div', () => {
-    const wrapper = shallow(<CommentContainer />);
-
-    expect(wrapper.type()).to.eql('div');
-  });
-});
-```
-
-Get sinon set up:
-```
-npm i sinon --save-dev
-
-# test_helper.js
-global.sinon = sinon;
-```
+**Note** The webpack config in this project is not out of the box ready for
+production.  You will want to set up Plugins like UglifyJS and a
+compile script that compiles webpack in production mode.
 
 
-Setting up karma:
-```
-npm i karma karma-mocha --save-dev
-npm install --save-dev karma-phantomjs-launcher
-npm i karma-webpack --save-dev
-```
-
-set up karma.config.js
+### Tooling
+This starter kit uses:
+* Mocha
+* Chai
+* Sinon
+* Enzyme
+* Karma
+* Webpack

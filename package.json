@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-dom": "^0.14.6",
+    "yargs": "^3.31.0"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -38,11 +39,12 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
+    "test": "node_modules/.bin/karma start karma.config.js",
+    "test:dev": "npm run test -- --watch",
     "build": "webpack",
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
-    "test:watch": "npm test -- --watch",
-    "karma": "node_modules/.bin/karma start karma.config.js"
+    "old_test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
+    "old_test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
