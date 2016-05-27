@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const styles = {
   height: '100%',
-  background: '#333'
+  background: '#99f'
 }
 
 class Root extends Component {
@@ -16,4 +16,3 @@ class Root extends Component {
 }
 
 export default Root;
-

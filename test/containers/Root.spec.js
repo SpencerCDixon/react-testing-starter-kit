@@ -32,10 +32,10 @@ describe('(Container) Root', () => {
     expect(wrapper.type()).to.eql('div');
   });
 
-  it('has style with height 100%', () => {
+  it('has style with height 100%, background #99f', () => {
     const expectedStyles = {
       height: '100%',
-      background: '#333'
+      background: '#99f'
     }
     expect(wrapper.prop('style')).to.eql(expectedStyles);
   });
