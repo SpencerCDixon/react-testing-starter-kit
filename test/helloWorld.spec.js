@@ -1,7 +1,7 @@
-import { expect } from 'chai';
+import expect from 'expect';
 
-describe('hello world', () => {
-  it('works!', () => {
-    expect(true).to.be.true;
-  });
+describe('Hello test from expect', () => {
+  it('Works!', () => {
+    expect('George').toEqual('George');
+  })
 });

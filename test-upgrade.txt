@@ -1,0 +1,162 @@
+Upgrade react-testing-starter-kit to React 15, Enzyme 2.3.0
+
+Update:
+
+enzyme:				2.3.0
+karma-mocha:			1.0.1
+karma-phantomjs-launcher:	1.0.0
+karma-spec-reporter:		0.0.26
+phantomjs:			2.1.7
+phantomjs-polyfill:		0.0.2
+react:				15.1.0
+react-addons-test-utils:	15.1.0
+react-dom:			15.1.0
+yargs:				4.7.1 
+mocha:				2.5.3
+chai:				3.5.0
+sinon:				1.17.4
+
+Install:
+
+expect: 1.20.1
+jsdom: 9.2.0
+
+Remove?
+
+chai
+sinon
+
+mocha options:
+from: https://github.com/erikthedeveloper/example-react-app-react-mail/blob/master/test/mocha.opts
+
+--compilers js:babel-core/register
+--recursive
+
+eslintrc options:
+from https://github.com/erikthedeveloper/example-react-app-react-mail/blob/master/tests/.eslintrc
+
+{
+  "env": {
+    "mocha": true
+  }
+}
+
+Karma?
+
+karma-chai
+
+
+Configure webpack:
+
+see: https://github.com/airbnb/enzyme/blob/master/docs/guides/webpack.md#react-15-compatability
+
+Configure Karma:
+
+https://github.com/airbnb/enzyme/blob/master/docs/guides/karma.md
+
+
+
+Writing tests:
+-------------
+
+Using Enzyme shallow mode:
+
+See: http://airbnb.io/enzyme/docs/api/shallow.html
+
+Starter test template
+
+---
+import expect from 'expect';
+describe('Component: Messagedetail', () => {
+  it('does all the things', () => {
+    expect(true).toEqual(true);
+  })
+});
+---
+
+Run mocha:
+See: 
+
+	mocha ./src/**/*.test.js
+
+tip:
+
+Flesh out tests to be run, even before writing complete test code. Just write 
+minimal 'it' blocks w=with message only:
+
+	it('what ever message describes the test to be written);
+e.g.	'links back to the message listing "search" page'
+	'indicates whether the message is "flagged"'
+	'toggles the :flagged" status when flag button is clicked'
+	'deletes itself when the "delete" button is clicked'
+etc.
+
+These will run and appears as 'pending'
+
+Finishing test code:
+
+---
+import React from 'react'
+import expect from 'expect';
+import { shallow } from 'enzyme'
+import { MessageDetail } from './MessageDetail'
+
+describe('Component: MessageDetail', () => {
+
+  // Provide dummy props need by component under test
+  const minProps = {
+    message: {},
+    deleteMessage: () => {},
+    toggleFlagged: () => {}
+  };
+
+  it('renders without exploding', () => {
+
+    expect(
+      shallow(
+        <MessageDetail {...minProps} message={'this will take precedence over minProps'}/>
+      ).length
+    ).toEqual(1)
+
+  })
+
+  it('links back to the message listing "search" page', () => {
+    const wrapper = shallow(<MessageDetail {...minProps} />);
+
+    // find <Link to='/'...
+    expect(
+      wrapper.find('Link').prop('to')
+    ).toEqual('/');
+  })
+
+  it('indicates whether the message is "flagged"', () => {
+    const flaggedMessage = {flagged: true};
+
+    // find <button ... className={classnames(btnClasses, {'text-red: message.flagged})}
+    expect(
+      shallow(<MessageDetail {...minProps} message={flaggedMessage} />)
+        .find('button')
+        .at(1)
+        .hasClass('text-red')
+    ).toEqual(true)
+
+    expect(
+      shallow(<MessageDetail {...minProps} message={unFlaggedMessage} />)
+        .find('button')
+        .at(1)
+        .hasClass('text-red')
+    ).toEqual(false)
+
+
+  });
+
+  it('toggles the :flagged" status when flag button is clicked');
+  it('deletes itself when the "delete" button is clicked');
+ 
+});
+
+
+
+-S react@15.1.0 react-dom@15.1.0 yargs@4.7.1
+
+-D enzyme@2.3.0 karma-mocha@1.0.1 karma-phantomjs-launcher@1.0.0 karma-spec-reporter@0.0.26 phantomjs@2.1.7 phantomjs-polyfill@0.0.2 react-addons-test-utils@15.1.0 mocha@2.5.3 chai@3.5.0 sinon@1.17.4 expect@1.20.1
