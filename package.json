@@ -46,7 +46,7 @@
     "test": "node_modules/.bin/karma start karma.config.js",
     "test-karma": "npm test",
     "test-karma-watch": "npm run test -- --watch",
-    "test-mocha": "mocha ./test/**/*.spec.js --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
+    "test-mocha": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
     "test-mocha-watch": "npm run test-mocha -- --watch"
   },
   "repository": {
