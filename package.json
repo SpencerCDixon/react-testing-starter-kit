@@ -33,8 +33,8 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
-    "phantomjs": "^2.1.7",
     "phantomjs-polyfill": "0.0.2",
+    "phantomjs-prebuilt": "^2.1.7",
     "react-addons-test-utils": "^15.1.0",
     "sinon": "^1.17.4",
     "webpack": "^1.12.11",
@@ -43,8 +43,8 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
-    "test": "node_modules/.bin/karma start karma.config.js",
-    "test-karma": "npm test",
+    "test": "npm test-karma",
+    "test-karma": "node_modules/.bin/karma start karma.config.js",
     "test-karma-watch": "npm run test -- --watch",
     "test-mocha": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
     "test-mocha-watch": "npm run test-mocha -- --watch"

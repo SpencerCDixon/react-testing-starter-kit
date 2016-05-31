@@ -14,7 +14,7 @@ module.exports = function(config) {
     files: [
       'node_modules/babel-polyfill/dist/polyfill.js',
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
-      './test/**/*.js' // specify files to watch for tests
+      './test/**/*spec.js' // specify files to watch for tests
     ],
     preprocessors: {
       // these files we want to be precompiled with webpack
@@ -50,6 +50,7 @@ module.exports = function(config) {
       externals: {
         'jsdom': 'window',
         'cheerio': 'window',
+        'react/addons': true, // important!!
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': 'window'
       },

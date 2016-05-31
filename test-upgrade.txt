@@ -1,30 +1,39 @@
 Upgrade react-testing-starter-kit to React 15, Enzyme 2.3.0
 
-Update:
+Test commands:
+  npm test: run Karma single execution
+  
+  npm run test-karma: run Karma single execution
+  npm run test-karma-watch: run karma in watch mode
 
-enzyme:				2.3.0
-karma-mocha:			1.0.1
-karma-phantomjs-launcher:	1.0.0
-karma-spec-reporter:		0.0.26
-phantomjs:			2.1.7
-phantomjs-polyfill:		0.0.2
-react:				15.1.0
-react-addons-test-utils:	15.1.0
-react-dom:			15.1.0
-yargs:				4.7.1 
-mocha:				2.5.3
-chai:				3.5.0
-sinon:				1.17.4
+  npm run test-mocha: run Mocha single execution
+  npm run test-mocha-watch run Mocha in watch mode
+
+Update to latest versions:
+
+e.g.  $ npm install --save-dev enzyme@*
+etc.
+
+  enzyme:				2.3.0
+  karma-mocha:			1.0.1
+  karma-phantomjs-launcher:	1.0.0
+  karma-spec-reporter:		0.0.26
+  phantomjs-polyfill:		0.0.2
+  react:				15.1.0
+  react-addons-test-utils:	15.1.0
+  react-dom:			15.1.0
+  yargs:				4.7.1
+  mocha:				2.5.3
+  chai:				3.5.0
+  sinon:				1.17.4
+
+Remove
+  phantomjs:
 
 Install:
-
-expect: 1.20.1
-jsdom: 9.2.0
-
-Remove?
-
-chai
-sinon
+  jsdom: 9.2.0
+  phantomjs-prebuilt:   2.1.7
+  karma-chai: 0.1.0
 
 mocha options:
 from: https://github.com/erikthedeveloper/example-react-app-react-mail/blob/master/test/mocha.opts
@@ -40,11 +49,6 @@ from https://github.com/erikthedeveloper/example-react-app-react-mail/blob/maste
     "mocha": true
   }
 }
-
-Karma?
-
-karma-chai
-
 
 Configure webpack:
 
@@ -66,97 +70,55 @@ See: http://airbnb.io/enzyme/docs/api/shallow.html
 Starter test template
 
 ---
-import expect from 'expect';
-describe('Component: Messagedetail', () => {
-  it('does all the things', () => {
-    expect(true).toEqual(true);
+describe('Hello World', () => {
+  it('Works!', () => {
+    expect(true).to.be.true;
   })
 });
 ---
 
 Run mocha:
-See: 
 
-	mocha ./src/**/*.test.js
+	mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive --watch
 
 tip:
 
-Flesh out tests to be run, even before writing complete test code. Just write 
+Flesh out tests to be run, even before writing complete test code. Just write
 minimal 'it' blocks w=with message only:
 
 	it('what ever message describes the test to be written);
-e.g.	'links back to the message listing "search" page'
+e.g.
+  'links back to the message listing "search" page'
 	'indicates whether the message is "flagged"'
 	'toggles the :flagged" status when flag button is clicked'
 	'deletes itself when the "delete" button is clicked'
 etc.
 
-These will run and appears as 'pending'
+These will run and appear as 'pending'
 
-Finishing test code:
-
+A completed test using enzyme
 ---
-import React from 'react'
-import expect from 'expect';
-import { shallow } from 'enzyme'
-import { MessageDetail } from './MessageDetail'
+import React from 'react';
+import { shallow } from 'enzyme';
+import Root from '../../src/containers/Root';
 
-describe('Component: MessageDetail', () => {
+describe('(Container) Root', () => {
+  const wrapper = shallow(<Root />);
 
-  // Provide dummy props need by component under test
-  const minProps = {
-    message: {},
-    deleteMessage: () => {},
-    toggleFlagged: () => {}
-  };
-
-  it('renders without exploding', () => {
-
-    expect(
-      shallow(
-        <MessageDetail {...minProps} message={'this will take precedence over minProps'}/>
-      ).length
-    ).toEqual(1)
-
-  })
-
-  it('links back to the message listing "search" page', () => {
-    const wrapper = shallow(<MessageDetail {...minProps} />);
-
-    // find <Link to='/'...
-    expect(
-      wrapper.find('Link').prop('to')
-    ).toEqual('/');
-  })
-
-  it('indicates whether the message is "flagged"', () => {
-    const flaggedMessage = {flagged: true};
-
-    // find <button ... className={classnames(btnClasses, {'text-red: message.flagged})}
-    expect(
-      shallow(<MessageDetail {...minProps} message={flaggedMessage} />)
-        .find('button')
-        .at(1)
-        .hasClass('text-red')
-    ).toEqual(true)
-
-    expect(
-      shallow(<MessageDetail {...minProps} message={unFlaggedMessage} />)
-        .find('button')
-        .at(1)
-        .hasClass('text-red')
-    ).toEqual(false)
-
-
+  it('renders as a <div>', () => {
+    expect(wrapper.type()).to.equal('div');
   });
 
-  it('toggles the :flagged" status when flag button is clicked');
-  it('deletes itself when the "delete" button is clicked');
- 
+  it('has style with height 100%, background #99f', () => {
+    const expectedStyles = {
+      height: '100%',
+      background: '#99f'
+    }
+    expect(wrapper.prop('style')).to.eql(expectedStyles);
+  });
+
+  it('contains a header explaining the app', () => {
+    expect(wrapper.find('.welcome-header')).to.have.length(1);
+  });
 });
-
-
-
--S react@15.1.0 react-dom@15.1.0 yargs@4.7.1
-
--D enzyme@2.3.0 karma-mocha@1.0.1 karma-phantomjs-launcher@1.0.0 karma-spec-reporter@0.0.26 phantomjs@2.1.7 phantomjs-polyfill@0.0.2 react-addons-test-utils@15.1.0 mocha@2.5.3 chai@3.5.0 sinon@1.17.4 expect@1.20.1
+---

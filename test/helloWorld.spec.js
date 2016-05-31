@@ -1,5 +1,5 @@
 
-describe('Hello test from expect', () => {
+describe('Hello World', () => {
   it('Works!', () => {
     expect(true).to.be.true;
   })
