@@ -10,25 +10,25 @@ describe('(Component) CommentList', () => {
   // All of our tests that depend on mounting should go inside one of these
   // special describe blocks
   describe('Lifecycle methods', () => {
-    // it('calls componentDidMount', () => {
-    //   spyLifecycle(CommentList);
-    //
-    //   const props = {
-    //     onMount: () => {},
-    //     isActive: false
-    //   }
-    //
-    //   // using destructuring to pass props down
-    //   // easily and then mounting the component
-    //   mount(<CommentList {...props} />);
-    //
-    //   // CommentList's componentDidMount should have been
-    //   // called once.  spyLifecyle attaches sinon spys so we can
-    //   // make this assertion
-    //   expect(
-    //     CommentList.prototype.componentDidMount.calledOnce
-    //   ).to.be.true;
-    // });
+    it('calls componentDidMount', () => {
+
+      // create a spy for the componentDidMount function
+      sinon.spy(CommentList.prototype, 'componentDidMount');
+
+      const props = {
+        onMount: () => {},
+        isActive: false
+      }
+
+      // using destructuring to pass props down
+      // easily and then mounting the component
+      mount(<CommentList {...props} />);
+
+      // CommentList's componentDidMount should have been
+      // called once. In testing it's called twice, hence
+      // 'called'. When run in dev mode it's called only once.
+        expect(CommentList.prototype.componentDidMount.called).to.be.true;
+    });
 
     it('calls onMount prop once it mounts', () => {
       // create a spy for the onMount function

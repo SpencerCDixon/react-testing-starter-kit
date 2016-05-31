@@ -24,4 +24,3 @@ class CommentList extends Component {
 
 CommentList.propTypes = propTypes;
 export default CommentList;
-
