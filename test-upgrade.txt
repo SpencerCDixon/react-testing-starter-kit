@@ -3,16 +3,18 @@ Upgrade react-testing-starter-kit to React 15, Enzyme 2.3.0
 Notes:
 
   Karma runs all tests in about 4 seconds in watch mode.
-  Karma supports DOM manipulation, webpack builds and a variety of real browsers
+  Karma supports DOM manipulation, webpack builds a variety of real browsers
+  and shortened import paths.
 
   Mocha-webpack runs tests for changed files only, in about 1 second in watch mode.
-  Mocha-webpack supports webpack-builds.
+  Mocha-webpack supports webpack-builds and shortened import paths.
 
   Mocha runs all tests in less than 1 second in watch mode.
-  Mocha does not support DOM manipulation of module directories.
+  Mocha does not support DOM manipulation, module directories or shortened
+  import paths.
 
 Test commands:
-  npm test: run Karma single execution
+  npm test: run mocha-webpack single execution
 
   npm run test-karma: run karma single execution
   npm run test-karma-watch: run karma in watch mode
