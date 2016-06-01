@@ -1,0 +1,7 @@
+--webpack-config webpack.config-test.js
+--colors
+--require source-map-support
+--require babel-core/register
+--require test/test_helper.js
+--recursive
+test/**/*.spec.js

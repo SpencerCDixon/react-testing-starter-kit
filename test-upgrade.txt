@@ -1,16 +1,29 @@
 Upgrade react-testing-starter-kit to React 15, Enzyme 2.3.0
 
+Notes:
+
+  Karma runs all tests in about 4 seconds in watch mode.
+  Karma supports DOM manipulation, webpack builds and a variety of real browsers
+
+  Mocha-webpack runs tests for changed files only, in about 1 second in watch mode.
+  Mocha-webpack supports webpack-builds.
+
+  Mocha runs all tests in less than 1 second in watch mode.
+  Mocha does not support DOM manipulation of module directories.
+
 Test commands:
   npm test: run Karma single execution
-  
-  npm run test-karma: run Karma single execution
+
+  npm run test-karma: run karma single execution
   npm run test-karma-watch: run karma in watch mode
+
+  npm run test-mocha-webpack:  run mocha-webpack single execution
+  npm run test-mocha-webpack-watch:  run mocha-webpack in watch mode
 
   npm run test-mocha: run Mocha single execution
   npm run test-mocha-watch run Mocha in watch mode
 
-Update to latest versions:
-
+Update dependencies to latest versions:
 e.g.  $ npm install --save-dev enzyme@*
 etc.
 
@@ -34,12 +47,7 @@ Install:
   jsdom: 9.2.0
   phantomjs-prebuilt:   2.1.7
   karma-chai: 0.1.0
-
-mocha options:
-from: https://github.com/erikthedeveloper/example-react-app-react-mail/blob/master/test/mocha.opts
-
---compilers js:babel-core/register
---recursive
+  mocha-webpack: 0.3.1
 
 eslintrc options:
 from https://github.com/erikthedeveloper/example-react-app-react-mail/blob/master/tests/.eslintrc
@@ -50,25 +58,27 @@ from https://github.com/erikthedeveloper/example-react-app-react-mail/blob/maste
   }
 }
 
-Configure webpack:
+Configure mocha:
+  https://github.com/erikthedeveloper/example-react-app-react-mail/blob/master/test/mocha.opts
 
-see: https://github.com/airbnb/enzyme/blob/master/docs/guides/webpack.md#react-15-compatability
+  --compilers js:babel-core/register
 
 Configure Karma:
+  https://github.com/airbnb/enzyme/blob/master/docs/guides/karma.md
 
-https://github.com/airbnb/enzyme/blob/master/docs/guides/karma.md
+Configure webpack:
+  https://github.com/airbnb/enzyme/blob/master/docs/guides/webpack.md#react-15-compatability
 
-
+Configure mocha-webpack
+  https://github.com/zinserjan/mocha-webpack
 
 Writing tests:
 -------------
 
 Using Enzyme shallow mode:
-
-See: http://airbnb.io/enzyme/docs/api/shallow.html
+  see: http://airbnb.io/enzyme/docs/api/shallow.html
 
 Starter test template
-
 ---
 describe('Hello World', () => {
   it('Works!', () => {
@@ -78,13 +88,12 @@ describe('Hello World', () => {
 ---
 
 Run mocha:
-
 	mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive --watch
 
 tip:
-
+---
 Flesh out tests to be run, even before writing complete test code. Just write
-minimal 'it' blocks w=with message only:
+minimal 'it' blocks with message only:
 
 	it('what ever message describes the test to be written);
 e.g.
