@@ -4,12 +4,10 @@ import sinon from 'sinon';
 
 // Once we set up Karma to run our tests through webpack
 // we will no longer need to have these long relative paths
-import CommentList from '../../src/components/CommentList';
+import CommentList from 'components/CommentList';
 
 describe('(Component) CommentList', () => {
 
-  // All of our tests that depend on mounting should go inside one of these
-  // special describe blocks
   describe('Lifecycle methods', () => {
     it('calls componentDidMount', () => {
 

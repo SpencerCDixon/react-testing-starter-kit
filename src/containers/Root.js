@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CommentList from '../components/CommentList';
+import CommentList from 'components/CommentList';
 
 const styles = {
   height: '100%',

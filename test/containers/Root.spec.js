@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Root from '../../src/containers/Root';
+import Root from 'containers/Root';
 
 describe('(Container) Root', () => {
   const wrapper = shallow(<Root />);
