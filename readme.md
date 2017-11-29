@@ -1,3 +1,5 @@
+## OUTDATED!!! --> Use Jest, it's great :-)
+
 This starter kit goes with a blog post I wrote on how to set up TDD React
 environment.  [The blog post can be found here](http://spencerdixon.com/blog/setting-up-testing-in-react.html).
 
