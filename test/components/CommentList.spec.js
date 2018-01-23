@@ -1,26 +1,18 @@
 import React from 'react';
+import { mount, shallow } from 'enzyme';
+import sinon from 'sinon';
 
 // Once we set up Karma to run our tests through webpack
 // we will no longer need to have these long relative paths
-import CommentList from '../../src/components/CommentList';
-import {
-  describeWithDOM,
-  mount,
-  shallow,
-  spyLifecycle
-} from 'enzyme';
+import CommentList from 'components/CommentList';
 
 describe('(Component) CommentList', () => {
 
-  // using special describeWithDOM helper that enzyme
-  // provides so if other devs on my team don't have JSDom set up
-  // properly or are using old version of node it won't bork their test suite
-  //
-  // All of our tests that depend on mounting should go inside one of these
-  // special describe blocks
-  describeWithDOM('Lifecycle methods', () => {
+  describe('Lifecycle methods', () => {
     it('calls componentDidMount', () => {
-      spyLifecycle(CommentList);
+
+      // create a spy for the componentDidMount function
+      sinon.spy(CommentList.prototype, 'componentDidMount');
 
       const props = {
         onMount: () => {},
@@ -32,11 +24,9 @@ describe('(Component) CommentList', () => {
       mount(<CommentList {...props} />);
 
       // CommentList's componentDidMount should have been
-      // called once.  spyLifecyle attaches sinon spys so we can
-      // make this assertion
-      expect(
-        CommentList.prototype.componentDidMount.calledOnce
-      ).to.be.true;
+      // called once. In testing it's called twice, hence
+      // 'called'. When run in dev mode it's called only once.
+        expect(CommentList.prototype.componentDidMount.called).to.be.true;
     });
 
     it('calls onMount prop once it mounts', () => {

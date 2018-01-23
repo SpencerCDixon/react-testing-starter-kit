@@ -4,14 +4,14 @@
   "description": "React starter kit with nice testing environment set up.",
   "main": "src/main.js",
   "directories": {
-    "test": "tests",
+    "test": "test",
     "src": "src",
     "dist": "dist"
   },
   "dependencies": {
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6",
-    "yargs": "^3.31.0"
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "yargs": "^4.7.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
@@ -20,31 +20,39 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.3.13",
-    "chai": "^3.4.1",
-    "enzyme": "^1.2.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "expect": "^1.20.1",
+    "jsdom": "^9.2.0",
     "json-loader": "^0.5.4",
     "karma": "^0.13.19",
     "karma-chai": "^0.1.0",
-    "karma-mocha": "^0.2.1",
-    "karma-phantomjs-launcher": "^0.2.3",
+    "karma-mocha": "^1.0.1",
+    "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.6",
-    "karma-spec-reporter": "0.0.23",
+    "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^1.7.0",
-    "mocha": "^2.3.4",
-    "phantomjs": "^1.9.19",
-    "phantomjs-polyfill": "0.0.1",
-    "react-addons-test-utils": "^0.14.6",
-    "sinon": "^1.17.2",
+    "mocha": "^2.5.3",
+    "mocha-webpack": "^0.3.1",
+    "phantomjs-polyfill": "0.0.2",
+    "phantomjs-prebuilt": "^2.1.7",
+    "react-addons-test-utils": "^15.1.0",
+    "sinon": "^1.17.4",
     "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "webpack-node-externals": "^1.2.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/karma start karma.config.js",
-    "test:dev": "npm run test -- --watch",
     "build": "webpack",
     "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
-    "old_test": "mocha --compilers js:babel-register --require ./test/test_helper.js --recursive",
-    "old_test:watch": "npm test -- --watch"
+    "test": "npm run test-mocha-webpack",
+    "test-watch": "npm run test-mocha-webpack-watch",
+    "test-karma": "node_modules/.bin/karma start karma.config.js",
+    "test-karma-watch": "npm run test-karma -- --watch",
+    "test-mocha-webpack": "mocha-webpack ",
+    "test-mocha-webpack-watch": "mocha-webpack --watch",
+    "test-mocha": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
+    "test-mocha-watch": "npm run test-mocha -- --watch"
   },
   "repository": {
     "type": "git",

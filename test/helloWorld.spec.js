@@ -1,7 +1,6 @@
-import { expect } from 'chai';
 
-describe('hello world', () => {
-  it('works!', () => {
+describe('Hello World', () => {
+  it('Works!', () => {
     expect(true).to.be.true;
-  });
+  })
 });
